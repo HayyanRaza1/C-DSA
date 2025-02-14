@@ -19,6 +19,12 @@ class Node{
 
 };
 
+void InsertAtHead(Node*& node, int data ){
+    Node *temp = new Node(data);
+    temp->next = node;
+    node = temp;
+}
+
 void InsertAtTail(Node *head, int data){
     Node *temp = head;
     while(temp->next != NULL ){
@@ -43,7 +49,7 @@ void SearchInList(Node *head, int data){
 
 void PrintLinkedList(Node *head){
     Node *temp = head;
-    while(temp->next !=NULL){
+    while(temp!=NULL){
         cout<<"Data : "<<temp->data<<" Next : "<<temp->next<<endl;
         temp = temp->next;
     }
@@ -60,6 +66,8 @@ int main(){
     node1->next = node2;
     node2->next = node3;
     node3->next = node4;
+
+    InsertAtHead(node1, 5);
 
     PrintLinkedList(node1);
     cout<<"\n\n";
