@@ -21,6 +21,11 @@ int findMax(Node* root) {
     return max(root->data, max(findMax(root->left), findMax(root->right)));
 }
 
+int findMin(Node* root){
+    if(root == nullptr) return INT_MAX;
+    return min(root->data, min(findMin(root->left), findMin(root->right)));
+}
+
 bool searchInTree(Node* root , int data){
     if(root == nullptr) return false;
 
@@ -33,14 +38,23 @@ bool searchInTree(Node* root , int data){
 }
 
 void InsertNodeAtLeft(Node* root, int data){
-    Node* temp = new Node(data);
-    root->left = temp;
+    root->left = new Node(data);
 }
 
 
 void InsertNodeAtRight(Node* root, int data){
-    Node* temp = new Node(data);
-    root->right = temp;
+    root->right = new Node(data);
+}
+
+void DeleteNode(Node*& node){
+
+    cout<<"\nDeleted Node: "<<node<<"  With Childs : "<<node->left->data<<","<<node->right->data<<" And Data " <<node->data<<endl;
+    delete node->left;
+    delete node->right;
+    node->left = nullptr;
+    node->right = nullptr;
+    delete node;
+    node = nullptr;
 }
 
 int main(){
@@ -52,16 +66,29 @@ int main(){
     root->left = node1;
     root->right = node2;
 
-    //cout<<"Max Value In The Tree is :"<<findMax(root);
     system("cls");
     system("cls");
     InsertNodeAtLeft(node1 , 3);
     InsertNodeAtRight(node1 , 4);
-
+    
     InsertNodeAtLeft(node2 , 5);
     InsertNodeAtRight(node2 , 6);
+    
+    cout<<"\nMax Value In The Tree is :"<<findMax(root);
+    cout<<"\nMin Value In The Tree is :"<<findMin(root);
 
-    searchInTree(root , 6);
+    DeleteNode(node2);
+
+    int dataToFind;
+
+    cout<<"\n";
+    cin>>dataToFind;
+    
+    if(searchInTree(root , dataToFind)){
+        //Data Found
+    }else{
+        cout<<"No Data Found :("<<endl;
+    }
 
     return 0;
 }
