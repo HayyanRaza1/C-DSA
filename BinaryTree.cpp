@@ -21,6 +21,27 @@ int findMax(Node* root) {
     return max(root->data, max(findMax(root->left), findMax(root->right)));
 }
 
+bool searchInTree(Node* root , int data){
+    if(root == nullptr) return false;
+
+    if(root->data == data){
+        cout<<"\nFound Data: "<< data <<" At Node:"<<root<<endl;
+        return true;
+    }
+
+    return searchInTree(root->left, data) || searchInTree(root->right, data);
+}
+
+void InsertNodeAtLeft(Node* root, int data){
+    Node* temp = new Node(data);
+    root->left = temp;
+}
+
+
+void InsertNodeAtRight(Node* root, int data){
+    Node* temp = new Node(data);
+    root->right = temp;
+}
 
 int main(){
     Node *root = new Node(0);
@@ -31,8 +52,16 @@ int main(){
     root->left = node1;
     root->right = node2;
 
-    cout<<"Max Value In The Tree is :"<<findMax(root);
+    //cout<<"Max Value In The Tree is :"<<findMax(root);
+    system("cls");
+    system("cls");
+    InsertNodeAtLeft(node1 , 3);
+    InsertNodeAtRight(node1 , 4);
 
+    InsertNodeAtLeft(node2 , 5);
+    InsertNodeAtRight(node2 , 6);
+
+    searchInTree(root , 6);
 
     return 0;
 }
