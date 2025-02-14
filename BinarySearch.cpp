@@ -28,7 +28,7 @@ int main(){
     int size = sizeof(arr) / sizeof(arr[0]);
     int target = 13;
 
-    BinarySearch(arr , size, target , 0 , 6);
+    BinarySearch(arr , size, target , arr[6] , arr[0]);
 
     return 0;
 }
