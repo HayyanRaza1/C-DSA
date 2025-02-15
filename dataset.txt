@@ -1,0 +1,10 @@
+hi,Hello! How can I assist you?
+hello,Hey there! Need any help?
+how are you,I'm just a bot, but I'm doing great!
+bye,Goodbye! Have a great day.
+where do you live,Pakistan
+where do you live ?,Pakistan
+what is you name,H-Bot
+what is your name,H-Bot
+Assalam-u-Alikum, Walikum Salam
+Hey, what's up Boss
